@@ -16,7 +16,7 @@ AI Talent Intelligence Engine helps recruiters and hiring teams:
 - Generate weighted, explainable scoring
 - Analyze candidates in real time via web interface
 
-The system is designed to move beyond keyword matching and instead use embedding-based semantic intelligence combined with structured weighting logic.
+The system moves beyond keyword matching by combining embedding-based semantic intelligence with structured weighting logic.
 
 ---
 
@@ -43,3 +43,142 @@ The ranking engine combines multiple scoring components:
 - Strategic reward for strong core skill overlap
 
 ### Final Score Formula
+
+Final Score =
+0.5 × Skill Score  
++ 0.3 × Experience Score  
++ 0.1 × Education Score  
++ 0.1 × Bonus Score  
+
+All scoring components are explainable and returned via structured JSON.
+
+---
+
+## 🏗 System Architecture
+
+Frontend (Next.js + Tailwind)  
+↓  
+FastAPI Backend (REST API)  
+↓  
+ML Core (Modular Scoring Engine)  
+↓  
+BGE Large Embedding Model (Semantic Layer)  
+
+The system is modular and designed for scalability and future extension.
+
+---
+
+## 🖥 Tech Stack
+
+### Backend
+- Python
+- FastAPI
+- Sentence Transformers (BGE-large-en-v1.5)
+- NLTK
+- Modular ML scoring architecture
+
+### Frontend
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+
+---
+
+## 📦 Project Structure
+
+resume-ranking-engine/  
+│  
+├── backend/  
+│   ├── app/          # FastAPI routes  
+│   ├── src/          # ML core modules  
+│   └── requirements.txt  
+│  
+├── frontend/  
+│   └── Next.js SaaS interface  
+│  
+└── README.md  
+
+---
+
+## 🔍 Example API Response
+
+```json
+{
+  "latency_seconds": 0.42,
+  "results": [
+    {
+      "candidate_id": "candidate_1",
+      "final_score": 0.68,
+      "skill_score": 0.80,
+      "experience_score": 0.66,
+      "matched_skills": ["python", "docker", "fastapi"],
+      "missing_skills": ["aws"]
+    }
+  ]
+}
+```
+
+---
+
+## 🎯 Key Features
+
+- Multi-candidate ranking from a single job description
+- Explainable scoring logic
+- Visual ranking interface
+- Real-time latency tracking
+- Production-style API layer
+- Clean modular ML architecture
+
+---
+
+## 📈 Future Roadmap
+
+- PDF resume ingestion
+- Section-aware JD parsing (Required vs Preferred)
+- Skill graph clustering
+- Candidate comparison view
+- Authentication & recruiter dashboards
+- Cloud deployment & scaling
+- Docker containerization
+
+---
+
+## 🧩 Why This Project Matters
+
+Traditional applicant tracking systems rely heavily on keyword filtering, often missing semantic relevance.
+
+This engine introduces:
+- Embedding-based semantic intelligence
+- Weighted priority logic
+- Transparent scoring architecture
+- Full-stack production design
+
+It demonstrates end-to-end ML system engineering — from model integration to API exposure to SaaS-style interface.
+
+---
+
+## 🛠 Running Locally
+
+### Backend
+
+cd backend  
+python -m venv venv  
+venv\Scripts\activate  
+pip install -r requirements.txt  
+python -m uvicorn app.main:app --reload  
+
+### Frontend
+
+cd frontend  
+npm install  
+npm run dev  
+
+Then open:
+
+http://localhost:3000  
+
+---
+
+## 📌 Author
+
+Built as a full-stack AI engineering portfolio project with startup-grade architecture and scalable design in mind.
